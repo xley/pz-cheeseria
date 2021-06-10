@@ -44,6 +44,9 @@ up:prod ->
 down ->
     docker-compose down
 
+test ->
+    cd server & jest
+
 # URL's
 
 FrontEnd: http://localhost:3000/

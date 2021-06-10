@@ -143,9 +143,6 @@
 						"type": "number",
 						"format": "double"
 					},
-					"dateTime": {
-						"type": "string"
-					},
 					"cheeses": {
 						"items": {
 							"$ref": "#/components/schemas/Cheese"
@@ -157,7 +154,6 @@
 					"userId",
 					"totalPrice",
 					"totalItems",
-					"dateTime",
 					"cheeses"
 				],
 				"type": "object",
@@ -261,7 +257,8 @@
 						"name": "id",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"format": "double",
+							"type": "number"
 						}
 					}
 				]
