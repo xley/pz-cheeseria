@@ -1,0 +1,21 @@
+{
+  "name": "pz-cheeseria",
+  "version": "1.0.0",
+  "description": "## Overview",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up:dev": "docker-compose up --build",
+    "up:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "down": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xley/pz-cheeseria.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xley/pz-cheeseria/issues"
+  },
+  "homepage": "https://github.com/xley/pz-cheeseria#readme"
+}
