@@ -54,3 +54,10 @@ FrontEnd: http://localhost:3000/
 BackEnd: http://localhost:9000/
 
 Swagger-UI: http://localhost:9000/docs/#/
+
+# Known Bugs
+
+### Back End
+- .test files arn't excluded from tsConfig.json correctly. To work around this issue "// @ts-nocheck" has been added to the top of each .test file. This isn't optimal as other TS linting issue's are ignored that could cause the tests to fail.
+
+- [typeorm-seeding](https://www.npmjs.com/package/typeorm-seeding#-basic-seeder) dependency wasn't working for populating the 'cheese' table. To work aroud this issue 'cheese' data was created in the 'createConnection' workflow of the PostgreSQL tables. This isn't optimal as this method of injecting table data is not maintainable and can be injected multiple times if the connection is revised.
