@@ -1,4 +1,4 @@
-FROM node:10-alpine as base
+FROM node:10-alpine
 
 WORKDIR /app
 
@@ -7,9 +7,3 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-
-FROM base as production
-
-ENV NODE_PATH=./build
-
-RUN npm run build

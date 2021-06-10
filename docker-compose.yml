@@ -4,7 +4,6 @@ services:
         build:
             context: ./server
             dockerfile: Dockerfile
-            target: base
         volumes:
             - ./server:/app
             - ./server/nodemon.json:/app/nodemon.json
@@ -15,7 +14,6 @@ services:
         build: 
             context: ./client
             dockerfile: Dockerfile
-            target: base
         environment:
             - NODE_ENV=development
         volumes:
