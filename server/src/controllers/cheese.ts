@@ -1,22 +1,26 @@
-import { Get, Path, Route } from "tsoa";
-import ICheese from "../interfaces/cheese";
-const fs = require('fs');
-import * as _ from 'lodash';
-
+import { Body, Get, Path, Post, Route, Tags } from "tsoa";
+import { Cheese } from "src/entities";
+import { createCheese, getCheese, getCheesePrice, getCheeses, ICheesePayload } from "../repositories/cheese.repository";
 @Route("cheeses")
+@Tags("Cheese")
 export default class CheeseController {
     @Get("/")
-    public async getCheeses(): Promise<ICheese[]> {
-        let rawdata = fs.readFileSync('data/cheeses.json');
-        let cheeses = JSON.parse(rawdata);
-        return cheeses;
+    public async getCheeses(): Promise<Array<Cheese>> {
+        return getCheeses();
     }
 
-    @Get("/:cheeseId/:weight")
-    public async getCheeseTotalPrice(@Path() cheeseId: string, weight: string): Promise<number | null> {
-        let rawdata = fs.readFileSync('data/cheeses.json');
-        let cheeses = JSON.parse(rawdata);
-        const selectCheese = _.find(cheeses, { "id": parseInt(cheeseId) });
-        return selectCheese ? selectCheese.price * parseFloat(weight) : null;
+    @Post("/")
+    public async createCheese(@Body() body: ICheesePayload): Promise<Cheese> {
+        return createCheese(body);
+    }
+
+    @Get("/:id")
+    public async getCheese(@Path() id: string): Promise<Cheese | null> {
+        return getCheese(Number(id));
+    }
+
+    @Get("/:id/:weight")
+    public async getCheeseTotalPrice(@Path() id: string, weight: string): Promise<number | null> {
+        return getCheesePrice(Number(id), Number(weight));
     }
 }

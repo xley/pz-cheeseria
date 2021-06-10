@@ -1,7 +1,11 @@
 import express = require('express');
 import swaggerUi from "swagger-ui-express";
+import "reflect-metadata";
+import { createConnection } from "typeorm";
 
-import apiRouter from './routes';
+import apiRouter from './routes/index';
+import dbConfig from "./config/database";
+import { cheeses } from './seeds/cheeses.seed';
 const app = express();
 const cors = require("cors");
 
@@ -23,4 +27,17 @@ app.use(
 app.use(apiRouter);
 
 const port = process.env.PORT || 9000;
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+
+createConnection(dbConfig)
+    .then(async connection => {
+        await connection.manager.save(cheeses);
+    })
+    .then((_connection) => {
+        app.listen(port, () => {
+            console.log("Server is running on port", port);
+        });
+    })
+    .catch((err) => {
+        console.log("Unable to connect to db", err);
+        process.exit(1);
+    });
