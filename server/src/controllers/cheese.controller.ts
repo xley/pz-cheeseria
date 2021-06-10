@@ -15,7 +15,7 @@ export default class CheeseController {
     }
 
     @Get("/:id")
-    public async getCheese(@Path() id: string): Promise<Cheese | null> {
+    public async getCheese(@Path() id: number): Promise<Cheese | null> {
         return getCheese(Number(id));
     }
 

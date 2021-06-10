@@ -76,6 +76,10 @@
     "src/**/*"
   ],
   "exclude": [
-    "src/**/*.test.ts"
+    "jest",
+    "**/node_modules",
+    "src/**/*.test.{js,ts}",
+    "**/*.test.{js,ts}",
+    "**/*.*.test.{js,ts}"
   ]
 }

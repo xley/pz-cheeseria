@@ -1,5 +1,5 @@
 import * as express from 'express';
-import CheeseController from '../controllers/cheese';
+import CheeseController from '../controllers/cheese.controller';
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/', async (_req, res) => {
 router.get('/:id', async (req, res) => {
     let { id } = req.params;
     const controller = new CheeseController();
-    const response = await controller.getCheese(id);
+    const response = await controller.getCheese(Number(id));
     return res.json(response);
 });
 

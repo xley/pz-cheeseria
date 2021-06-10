@@ -5,13 +5,7 @@ export interface IPurchasePayload {
     userId: string
     totalPrice: number
     totalItems: number
-    dateTime: string
     cheeses: Cheese[]
-}
-
-interface IPurchasedCheese {
-    id: string
-    quantity: number
 }
 
 export const getPurchases = async (userId: string): Promise<Array<Purchase> | null> => {
@@ -28,11 +22,4 @@ export const createPurchase = async (payload: IPurchasePayload): Promise<Purchas
         ...purchase,
         ...payload,
     });
-};
-
-export const getPurchase = async (id: string): Promise<Purchase | null> => {
-    const purchaseRepository = getRepository(Purchase);
-    const purchase = await purchaseRepository.findOne({ id: id });
-    if (!purchase) return null;
-    return purchase;
 };
