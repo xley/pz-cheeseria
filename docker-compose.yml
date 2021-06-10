@@ -8,9 +8,9 @@ services:
             - ./server:/app
             - ./server/nodemon.json:/app/nodemon.json
         ports:
-            - 9000:9000
+            - $SERVER_LOCAL_PORT:$SERVER_DOCKER_PORT
         command: npm run dev
-    client:
+    client: 
         build: 
             context: ./client
             dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
             - ./client:/app
             - /app/node_modules  
         ports:
-            - 3000:3000
+            - $CLIENT_LOCAL_PORT:$CLIENT_DOCKER_PORT
         depends_on:
             - server
         command: npm start
