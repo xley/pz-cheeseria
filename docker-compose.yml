@@ -1,0 +1,28 @@
+version: '3'
+services:
+    server:
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+            target: base
+        volumes:
+            - ./server:/app
+            - ./server/nodemon.json:/app/nodemon.json
+        ports:
+            - 9000:9000
+        command: npm run dev
+    client:
+        build: 
+            context: ./client
+            dockerfile: Dockerfile
+            target: base
+        environment:
+            - NODE_ENV=development
+        volumes:
+            - ./client:/app
+            - /app/node_modules  
+        ports:
+            - 3000:3000
+        depends_on:
+            - server
+        command: npm start
