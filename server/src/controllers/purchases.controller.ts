@@ -2,7 +2,7 @@ import { Body, Get, Path, Post, Route, Tags } from "tsoa";
 import { createPurchase, getPurchases, IPurchasePayload } from "../repositories/purchases.repository";
 import { Purchase } from "../entities/purchase.entity";
 
-@Route("purchases")
+@Route("api/purchases")
 @Tags("Purchase")
 export default class PurchaseController {
     @Get("/:userId")

@@ -4,7 +4,9 @@ import {
     Column,
     CreateDateColumn,
     UpdateDateColumn,
+    ManyToMany,
 } from "typeorm";
+import { Purchase } from "./purchase.entity";
 
 @Entity()
 export class Cheese {

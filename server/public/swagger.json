@@ -87,6 +87,49 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"IPurchasedCheesePayload": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"colour": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"category": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"amount",
+					"title",
+					"price",
+					"colour",
+					"description",
+					"category",
+					"image"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Purchase": {
 				"properties": {
 					"id": {
@@ -105,7 +148,7 @@
 					},
 					"cheeses": {
 						"items": {
-							"$ref": "#/components/schemas/Cheese"
+							"$ref": "#/components/schemas/IPurchasedCheesePayload"
 						},
 						"type": "array"
 					},
@@ -145,7 +188,7 @@
 					},
 					"cheeses": {
 						"items": {
-							"$ref": "#/components/schemas/Cheese"
+							"$ref": "#/components/schemas/IPurchasedCheesePayload"
 						},
 						"type": "array"
 					}
@@ -172,7 +215,7 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/cheeses": {
+		"/api/cheeses": {
 			"get": {
 				"operationId": "GetCheeses",
 				"responses": {
@@ -227,7 +270,7 @@
 				}
 			}
 		},
-		"/cheeses/{id}": {
+		"/api/cheeses/{id}": {
 			"get": {
 				"operationId": "GetCheese",
 				"responses": {
@@ -264,7 +307,7 @@
 				]
 			}
 		},
-		"/cheeses/{id}/{weight}": {
+		"/api/cheeses/{id}/{weight}": {
 			"get": {
 				"operationId": "GetCheeseTotalPrice",
 				"responses": {
@@ -305,7 +348,7 @@
 				]
 			}
 		},
-		"/purchases/{userId}": {
+		"/api/purchases/{userId}": {
 			"get": {
 				"operationId": "GetPurchases",
 				"responses": {
@@ -340,7 +383,7 @@
 				]
 			}
 		},
-		"/purchases/create": {
+		"/api/purchases/create": {
 			"post": {
 				"operationId": "CreatePurchase",
 				"responses": {

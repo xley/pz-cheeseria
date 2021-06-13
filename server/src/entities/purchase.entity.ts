@@ -1,3 +1,4 @@
+import { IPurchasedCheesePayload } from "src/repositories/purchases.repository";
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -5,6 +6,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     OneToMany,
+    ManyToMany,
 } from "typeorm";
 import { Cheese } from "./cheese.entity";
 
@@ -22,8 +24,8 @@ export class Purchase {
     @Column()
     totalItems!: number;
 
-    @OneToMany((_type) => Cheese, (cheese: Cheese) => cheese)
-    cheeses!: Array<Cheese>;
+    @Column("simple-json")
+    cheeses!: IPurchasedCheesePayload[];
 
     @CreateDateColumn()
     createdAt!: Date;

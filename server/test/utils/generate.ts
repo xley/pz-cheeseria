@@ -1,6 +1,5 @@
 import faker from "faker";
 import { IPurchasePayload } from "src/repositories/purchases.repository";
-import { Cheese } from "../../src/entities";
 
 export function generateCheeseData(overide = {}) {
     return {
@@ -45,7 +44,18 @@ export function generatePurchaseData(overide = {}) {
         userId: faker.datatype.string(),
         totalPrice: faker.datatype.number(),
         totalItems: faker.datatype.number(),
-        cheeses: [new Cheese()],
+        cheeses: [
+            {
+                id: faker.datatype.number(),
+                amount: faker.datatype.number(),
+                title: faker.datatype.string(),
+                price: faker.datatype.number(),
+                colour: faker.datatype.string(),
+                description: faker.datatype.string(),
+                category: faker.datatype.string(),
+                image: faker.datatype.string()
+            }
+        ],
         createdAt: new Date(),
         updatedAt: new Date(),
         ...overide,
@@ -68,6 +78,17 @@ export function generatePurchasePayload(): IPurchasePayload {
         userId: faker.datatype.string(),
         totalPrice: faker.datatype.number(),
         totalItems: faker.datatype.number(),
-        cheeses: [new Cheese()]
+        cheeses: [
+            {
+                id: faker.datatype.number(),
+                amount: faker.datatype.number(),
+                title: faker.datatype.string(),
+                price: faker.datatype.number(),
+                colour: faker.datatype.string(),
+                description: faker.datatype.string(),
+                category: faker.datatype.string(),
+                image: faker.datatype.string()
+            }
+        ]
     }
 }

@@ -5,7 +5,7 @@ import PurchaseRouter from "./purchase.router";
 
 const router = express.Router();
 
-router.use("/cheeses", CheeseRouter);
-router.use("/purchases", PurchaseRouter);
+router.use("/api/cheeses", CheeseRouter);
+router.use("/api/purchases", PurchaseRouter);
 
 export default router;
