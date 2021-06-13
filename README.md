@@ -33,6 +33,8 @@ Back End:
 - Jest
 - Docker
 
+## Setup
+To start up the project, copy ".env.example" and rename to ".env"
 ## Commands
 
 up:dev ->
@@ -45,7 +47,7 @@ down ->
     docker-compose down
 
 test ->
-    cd server & jest
+    cd server & install & jest
 
 # URL's
 
