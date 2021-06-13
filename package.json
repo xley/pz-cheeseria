@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "## Overview",
   "scripts": {
-    "test": "cd server && npm test",
+    "test": "cd server && npm install-test",
     "up:dev": "docker-compose up --build",
     "up:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
     "down": "docker-compose down"

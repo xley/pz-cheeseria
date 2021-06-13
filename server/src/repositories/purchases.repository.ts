@@ -1,14 +1,25 @@
 import { getRepository } from "typeorm";
-import { Cheese, Purchase } from "../entities";
+import { Purchase } from "../entities";
 
 export interface IPurchasePayload {
     userId: string
     totalPrice: number
     totalItems: number
-    cheeses: Cheese[]
+    cheeses: IPurchasedCheesePayload[]
 }
 
-export const getPurchases = async (userId: string): Promise<Array<Purchase> | null> => {
+export interface IPurchasedCheesePayload {
+    id: number
+    amount: number
+    title: string
+    price: number
+    colour: string
+    description: string
+    category: string
+    image: string
+}
+
+export const getPurchases = async (userId: string): Promise<Purchase[] | null> => {
     const purchaseRepository = getRepository(Purchase);
     const purchases = await purchaseRepository.find({ userId: userId });
     if (!purchases) return null;

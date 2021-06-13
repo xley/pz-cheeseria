@@ -1,7 +1,7 @@
 import { Body, Get, Path, Post, Route, Tags } from "tsoa";
 import { Cheese } from "src/entities";
 import { createCheese, getCheese, getCheesePrice, getCheeses, ICheesePayload } from "../repositories/cheese.repository";
-@Route("cheeses")
+@Route("api/cheeses")
 @Tags("Cheese")
 export default class CheeseController {
     @Get("/")
